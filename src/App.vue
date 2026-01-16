@@ -1,9 +1,9 @@
 <script>
-import ResourceItem from "@/components/Resources/ResourceItem.vue";
+import ResourceList from "@/components/Resources/ResourceList.vue";
 
 export default {
   name: "App",
-  components: { ResourceItem },
+  components: { ResourceList },
   data() {
     return {
       resources: [
@@ -32,9 +32,21 @@ export default {
 </script>
 
 <template>
-  <resource-item
-    v-for="resource in resources"
-    v-bind="resource"
-    :key="resource.id"
-  />
+  <resource-list :resources="resources" />
 </template>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+</style>
