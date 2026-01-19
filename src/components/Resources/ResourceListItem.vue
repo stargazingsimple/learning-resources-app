@@ -1,9 +1,10 @@
 <script>
 import BaseCard from "@/components/UI/BaseCard.vue";
+import BaseButton from "@/components/UI/BaseButton.vue";
 
 export default {
   name: "ResourceListItem",
-  components: { BaseCard },
+  components: { BaseCard, BaseButton },
   props: {
     title: {
       type: String,
@@ -26,7 +27,7 @@ export default {
     <base-card>
       <header>
         <h3>{{ title }}</h3>
-        <button>Delete</button>
+        <base-button is-flat>Delete</base-button>
       </header>
       <p>{{ description }}</p>
       <nav>
