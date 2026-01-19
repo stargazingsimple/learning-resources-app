@@ -1,15 +1,10 @@
 <script>
-import ResourceListItem from "@/components/Resources/ResourceListItem.vue";
+import ResourceListItem from "@/components/Resource/ResourceListItem.vue";
 
 export default {
   name: "ResourceList",
   components: { ResourceListItem },
-  props: {
-    resources: {
-      type: Array,
-      required: true,
-    },
-  },
+  inject: ["resources"],
 };
 </script>
 

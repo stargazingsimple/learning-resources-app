@@ -1,40 +1,16 @@
 <script>
-import ResourceList from "@/components/Resources/ResourceList.vue";
 import TheHeader from "@/components/Layouts/TheHeader.vue";
+import ResourceTabs from "@/components/Resource/ResourceTabs.vue";
 
 export default {
   name: "App",
-  components: { ResourceList, TheHeader },
-  data() {
-    return {
-      resources: [
-        {
-          id: Math.random().toString(),
-          title: "Google",
-          description: "Google platform",
-          link: "https://google.com",
-        },
-        {
-          id: Math.random().toString(),
-          title: "Udemy",
-          description: "Udemy platform",
-          link: "https://udemy.com",
-        },
-        {
-          id: Math.random().toString(),
-          title: "Vue",
-          description: "Vue js platform",
-          link: "https://vuejs.org",
-        },
-      ],
-    };
-  },
+  components: { ResourceTabs, TheHeader },
 };
 </script>
 
 <template>
   <the-header title="Learning Resources" />
-  <resource-list :resources="resources" />
+  <resource-tabs />
 </template>
 
 <style>
