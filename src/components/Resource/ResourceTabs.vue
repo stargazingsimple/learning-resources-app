@@ -45,11 +45,16 @@ export default {
   provide() {
     return {
       resources: this.resources,
+      addResource: this.addResource,
     };
   },
   methods: {
     setSelectedTab(name) {
       this.selectedTab = name;
+    },
+    addResource(resource) {
+      this.resources.push(resource);
+      this.selectedTab = "resource-list";
     },
   },
 };
@@ -66,5 +71,7 @@ export default {
       {{ title }}
     </base-button>
   </base-card>
-  <component :is="selectedTab" />
+  <keep-alive>
+    <component :is="selectedTab" />
+  </keep-alive>
 </template>

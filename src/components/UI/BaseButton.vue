@@ -2,10 +2,6 @@
 export default {
   name: "BaseButton",
   props: {
-    type: {
-      type: String,
-      default: "button",
-    },
     isFlat: {
       type: Boolean,
       default: false,
@@ -15,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <button :type="type" :class="{ flat: isFlat }">
+  <button :class="{ flat: isFlat }">
     <slot />
   </button>
 </template>
