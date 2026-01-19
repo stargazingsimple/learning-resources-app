@@ -1,9 +1,10 @@
 <script>
 import ResourceList from "@/components/Resources/ResourceList.vue";
+import TheHeader from "@/components/Layouts/TheHeader.vue";
 
 export default {
   name: "App",
-  components: { ResourceList },
+  components: { ResourceList, TheHeader },
   data() {
     return {
       resources: [
@@ -32,6 +33,7 @@ export default {
 </script>
 
 <template>
+  <the-header title="Learning Resources" />
   <resource-list :resources="resources" />
 </template>
 
