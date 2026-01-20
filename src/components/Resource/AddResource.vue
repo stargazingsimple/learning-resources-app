@@ -1,10 +1,11 @@
 <script>
 import BaseCard from "@/components/UI/BaseCard.vue";
 import BaseButton from "@/components/UI/BaseButton.vue";
+import BaseDialog from "@/components/UI/BaseDialog.vue";
 
 export default {
   name: "AddResource",
-  components: { BaseButton, BaseCard },
+  components: { BaseButton, BaseCard, BaseDialog },
   inject: ["addResource"],
   data() {
     return {
@@ -13,16 +14,17 @@ export default {
         description: "",
         link: "",
       },
+      isValidForm: true,
     };
   },
   methods: {
     submit() {
       if (
-        !this.resource.title.trim().length ||
-        !this.resource.description.trim().length ||
-        !this.resource.link.trim().length
+        !this.resource.title.trim() ||
+        !this.resource.description.trim() ||
+        !this.resource.link.trim()
       ) {
-        alert("Invalid values");
+        this.isValidForm = false;
         return;
       }
       this.addResource({
@@ -35,6 +37,9 @@ export default {
       this.resource.title = "";
       this.resource.description = "";
       this.resource.link = "";
+    },
+    closeDialog() {
+      this.isValidForm = true;
     },
   },
 };
@@ -60,6 +65,22 @@ export default {
       </div>
     </form>
   </base-card>
+  <base-dialog
+    :open="!isValidForm"
+    :title="'Invalid values'"
+    @close-dialog="closeDialog"
+  >
+    <template #content>
+      <p>Unfortunately, at least one input value is invalid</p>
+      <p>
+        Please check all inputs and make sure you enter at least a few
+        characters into each input field
+      </p>
+    </template>
+    <template #actions>
+      <base-button @click="closeDialog">Close</base-button>
+    </template>
+  </base-dialog>
 </template>
 
 <style scoped>
