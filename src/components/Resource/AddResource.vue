@@ -28,7 +28,7 @@ export default {
         return;
       }
       this.addResource({
-        id: Math.random(),
+        id: Math.random().toString(),
         ...this.resource,
       });
       this.resetForm();

@@ -9,26 +9,7 @@ export default {
   components: { BaseButton, BaseCard, ResourceList, AddResource },
   data() {
     return {
-      resources: [
-        {
-          id: Math.random().toString(),
-          title: "Google",
-          description: "Google platform",
-          link: "https://google.com",
-        },
-        {
-          id: Math.random().toString(),
-          title: "Udemy",
-          description: "Udemy platform",
-          link: "https://udemy.com",
-        },
-        {
-          id: Math.random().toString(),
-          title: "Vue",
-          description: "Vue js platform",
-          link: "https://vuejs.org",
-        },
-      ],
+      resources: [],
       selectedTab: "resource-list",
       tabs: [
         {
@@ -46,6 +27,7 @@ export default {
     return {
       resources: this.resources,
       addResource: this.addResource,
+      deleteResource: this.deleteResource,
     };
   },
   methods: {
@@ -55,6 +37,12 @@ export default {
     addResource(resource) {
       this.resources.push(resource);
       this.selectedTab = "resource-list";
+    },
+    deleteResource(id) {
+      const deletedResourceIdx = this.resources.findIndex(
+        (resource) => resource.id === id,
+      );
+      this.resources.splice(deletedResourceIdx, 1);
     },
   },
 };
