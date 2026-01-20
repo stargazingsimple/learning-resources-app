@@ -16,21 +16,23 @@ export default {
 </script>
 
 <template>
-  <dialog :open="open" @click.self="$emit('close-dialog')">
-    <div class="wrapper">
-      <header>
-        <slot name="title">
-          <h2>{{ title }}</h2>
-        </slot>
-      </header>
-      <section>
-        <slot name="content" />
-      </section>
-      <menu>
-        <slot name="actions" />
-      </menu>
-    </div>
-  </dialog>
+  <teleport to="body">
+    <dialog :open="open" @click.self="$emit('close-dialog')">
+      <div class="wrapper">
+        <header>
+          <slot name="title">
+            <h2>{{ title }}</h2>
+          </slot>
+        </header>
+        <section>
+          <slot name="content" />
+        </section>
+        <menu>
+          <slot name="actions" />
+        </menu>
+      </div>
+    </dialog>
+  </teleport>
 </template>
 
 <style scoped>
